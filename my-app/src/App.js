@@ -21,9 +21,13 @@ const customer ={
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <Header
       
-      <Navbar/>
+      />
+
+      <Navbar
+      
+      />
       <User
         data = {customer}
       />

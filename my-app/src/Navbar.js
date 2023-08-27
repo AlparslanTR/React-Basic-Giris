@@ -1,33 +1,27 @@
-function Navbar(){
-    return <nav>
-        <ul class="nav nav-tabs" id="navId">
-            <li class="nav-item">
-                <a href="#tab1Id" class="nav-link active">Active</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#tab2Id">Action</a>
-                    <a class="dropdown-item" href="#tab3Id">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#tab4Id">Action</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="#tab5Id" class="nav-link">Another link</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link disabled">Disabled</a>
-            </li>
-        </ul>
+import { useEffect, useState } from "react";
+import axios from 'axios';
 
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="tab1Id" role="tabpanel"></div>
-            <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
-            <div class="tab-pane fade" id="tab3Id" role="tabpanel"></div>
-            <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
-            <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
+function Navbar(){
+
+    const [users, setUsers] = useState([]);
+
+    useEffect(()=>{
+        axios("https://jsonplaceholder.typicode.com/users")
+        .then((res) => setUsers(res.data))
+    },[]);
+
+    return (
+        <div>
+            Api deki verileri axios ile çekme
+
+            <ul>
+                { users.map((user) => (
+                    <li key={user.id}>
+                        {user.name}
+                    </li>
+               ) ) }  
+            </ul>
         </div>
-    </nav>
+    )
 }
 export default Navbar;
