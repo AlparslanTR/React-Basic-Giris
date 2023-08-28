@@ -6,6 +6,7 @@ import User from './User';
 import Counter from './Counter';
 import ChangeName from './ChangeName';
 import Form from './Form';
+import Catch from './Catch';
 
 
 
@@ -21,13 +22,18 @@ const customer ={
 function App() {
   return (
     <div className="App">
+      <Catch
+      
+      />
+      <hr></hr>
       <Header
       
       />
-
+      <hr></hr>
       <Navbar
       
       />
+      <hr></hr>
       <User
         data = {customer}
       />
